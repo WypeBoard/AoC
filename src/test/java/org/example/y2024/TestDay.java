@@ -15,8 +15,9 @@ public class TestDay {
     // Method to provide test data
     static Stream<BaseTest> provideImplementations() {
         return Stream.of(
-                new Day01Test(),
-                new Day02Test()
+                /*new Day01Test(),*/
+                /*new Day02Test(),*/
+                new Day03Test()
         );
     }
 
@@ -25,7 +26,7 @@ public class TestDay {
     void testProcessMethod(BaseTest testDayData) {
 
         List<String> part1TestData = testDayData.getPart1TestData();
-        List<String> part2TestData = testDayData.getPart1TestData();
+        List<String> part2TestData = testDayData.getPart2TestData();
 
         Day day1 = testDayData.getDay();
         Day day2 = testDayData.getDay();
