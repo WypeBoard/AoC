@@ -18,3 +18,84 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.register('createDay') {
+    outputs.dir("$projectDir/src/main/java/org/example/y2024")
+    outputs.dir("$projectDir/src/test/java/org/example/y2024")
+    outputs.dir("$projectDir/src/main/resources/days")
+
+    doLast {
+        def dayNumber = project.hasProperty('day') ? project.getProperty('day') : null
+        if (!dayNumber) {
+            throw new GradleException("Please provide the day number using -Pday=<number>")
+        }
+
+        def paddedDay = dayNumber.padLeft(2, '0')
+        def baseDir = projectDir.toString()
+
+        // Define paths for files to generate
+        def mainClassPath = "${baseDir}/src/main/java/org/example/y2024/Day${paddedDay}.java"
+        def testClassPath = "${baseDir}/src/test/java/org/example/y2024/Day${paddedDay}Test.java"
+        def resourcePath = "${baseDir}/src/main/resources/days/day${paddedDay}.txt"
+
+        // Create Day class
+        new File(mainClassPath).text = """
+            package org.example.y2024;
+
+            import org.example.framework.Day;
+
+            public class Day${paddedDay} extends Day {
+                @Override
+                protected void parseInput() {
+                    super.parseInput();
+                }
+            
+                @Override
+                public String evalPart1() {
+                    return null;
+                }
+            
+                @Override
+                public String evalPart2() {
+                    return null;
+                }
+            }
+        """.stripIndent()
+
+        // Create Test class
+        new File(testClassPath).text = """
+            package org.example.y2024;
+            
+            import org.example.framework.Day;
+            
+            import java.util.List;
+            
+            public class Day${paddedDay}Test implements BaseTest {
+                @Override
+                public Day getDay() {
+                    return new Day${paddedDay}();
+                }
+            
+                @Override
+                public List<String> getPart1TestData() {
+                    return List.of();
+                }
+            
+                @Override
+                public String getPart1ExpectedResult() {
+                    return "";
+                }
+            
+                @Override
+                public String getPart2ExpectedResult() {
+                    return "";
+                }
+            }
+        """.stripIndent()
+
+        // Create empty resource file
+        new File(resourcePath).createNewFile()
+
+        println "Created boilerplate for Day ${paddedDay}!"
+    }
+}
