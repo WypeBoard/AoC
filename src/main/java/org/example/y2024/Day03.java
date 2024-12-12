@@ -13,7 +13,7 @@ public class Day03 extends Day {
     private List<String> input = new ArrayList<>();
 
     @Override
-    protected void parseInput() {
+    public void parseInput() {
         input = getInput();
     }
 

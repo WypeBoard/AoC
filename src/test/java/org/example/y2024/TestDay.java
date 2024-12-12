@@ -17,7 +17,8 @@ public class TestDay {
         return Stream.of(
                 /*new Day01Test(),*/
                 /*new Day02Test(),*/
-                new Day03Test()
+                //new Day03Test()
+                new Day04Test()
         );
     }
 

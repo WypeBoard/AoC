@@ -42,9 +42,7 @@ public abstract class Day {
     /**
      * Helper method pre-parsing the input before using it for eval part1 and 2
      */
-    protected void parseInput() {
-        // Empty
-    };
+    public abstract void parseInput();
 
     /**
      * Evaluate part 1

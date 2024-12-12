@@ -12,7 +12,7 @@ public class Day02 extends Day {
     private List<List<Integer>> parsedInput = new ArrayList<>();
 
     @Override
-    protected void parseInput() {
+    public void parseInput() {
         List<String> input = getInput();
         input.forEach(row -> {
             List<String> strings = Arrays.asList(row.split(" "));

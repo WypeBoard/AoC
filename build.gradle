@@ -46,8 +46,7 @@ tasks.register('createDay') {
 
             public class Day${paddedDay} extends Day {
                 @Override
-                protected void parseInput() {
-                    super.parseInput();
+                public void parseInput() {
                 }
             
                 @Override

@@ -11,7 +11,7 @@ public class Day01 extends Day {
     List<Integer> secondList = new ArrayList<>();
 
     @Override
-    protected void parseInput() {
+    public void parseInput() {
         List<String> rawInput = getInput();
         rawInput.forEach(row -> {
             String[] split = row.split(" ");
